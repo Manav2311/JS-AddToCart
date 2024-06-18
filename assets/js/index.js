@@ -114,6 +114,10 @@ function updateCart() {
                         x ${product.quantity}
                         </div>
                         <div>
+          <button class="btn btn-secondary mr-2" onclick="decreaseQuantity(${index})">-</button>
+          <button class="btn btn-secondary mr-2" onclick="increaseQuantity(${index})">+</button>
+        </div>
+                        <div>
                             <button class="btn btn-danger btn-sm" onclick="removeFromCart(${product.id})">Remove</button>
                         </div>
                     </div>
@@ -152,7 +156,23 @@ function updateCart() {
     updateCart()
     updateCartCount()
   }
-  
+  function increaseQuantity(index) {
+  cart[index].quantity += 1;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+  updateCartCount();
+}
+
+function decreaseQuantity(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
+  }
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCart();
+  updateCartCount();
+}
   // Initial load
 document.addEventListener("DOMContentLoaded", () => {
     updateCartCount()
