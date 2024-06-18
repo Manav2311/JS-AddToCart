@@ -65,7 +65,7 @@ if (document.getElementById("products")) {
                 <div class="card-body">
                     <h5 class="card-title">${product.name}</h5>
                     <p class="card-text">$${product.price}</p>
-                    <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                    <button class="btn btn-secondary" onclick="addToCart(${product.id})">Add to Cart</button>
                 </div>
             </div>
         `;
